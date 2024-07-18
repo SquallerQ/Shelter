@@ -67,12 +67,6 @@ body {
 main {
   flex-grow: 1;
 }
-main {
-  background-color: aliceblue;
-}
-footer {
-  background-color: blue;
-}
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -160,7 +154,7 @@ header {
   max-width: 460px;
   padding-bottom: 40px;
 
-  font-family: Arial;
+  font-family: 'Arial', sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 24px;
@@ -176,4 +170,50 @@ header {
   border-radius: 100px;
   color: #292929;
   background-color: #f1cdb3;
+}
+
+/* about styles */
+.about__inner {
+  display: flex;
+  padding: 80px 175px 100px 175px;
+  justify-content: space-between;
+}
+.about__inner img {
+  max-width: initial;
+}
+.about__content {
+  margin-left: 120px;
+  margin-top: 14px;  
+}
+.about__content-title {
+  padding-bottom: 25px;
+
+  font-family: 'Georgia', serif;
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0.06em;
+  color: #545454;
+
+}
+.about__content-text {
+  padding-bottom: 25px;
+
+  font-family: 'Arial', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #4c4c4c;
+}
+
+
+
+
+
+
+
+
+
+footer {
+  background-color: blue;
 }
