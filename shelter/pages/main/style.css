@@ -175,7 +175,7 @@ header {
 /* about styles */
 .about__inner {
   display: flex;
-  padding: 80px 175px 100px 175px;
+  padding: 80px 175px 90px 175px;
   justify-content: space-between;
 }
 .about__inner img {
@@ -205,12 +205,99 @@ header {
   line-height: 24px;
   color: #4c4c4c;
 }
+/* pets styles */
+.pets {
+  background-color: #f6f6f6;
+}
+.pets__inner {
+  padding: 80px 0px 100px 0px;
+}
+.pets__title {
+  margin-bottom: 60px;
+  font-family: 'Georgia', serif;
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: #545454;
+}
+.pets__slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.pets__slider-arrow {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
 
+  width: 52px;
+  height: 52px;
+  border-radius: 100%;
+  border: 2px solid #f1cdb3;
+}
+.pets__slider-arrow--left {
+  background-image: url('../../assets/icons/left-arrow.svg');
+}
+.pets__slider-arrow--right {
+  background-image: url('../../assets/icons/right-arrow.svg');
+}
+.pets__slider-cards {
+  padding: 0 53px;
+  display: flex;
+  gap: 90px;
+  justify-content: space-between;
+}
+.pets__slider-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fafafa;
+  border-radius: 9px;
+}
+.pets__slider-image {
+  margin-bottom: 30px;
+}
+.pets__slider-text {
+  margin-bottom: 30px;
+  font-family: 'Georgia', serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: #545454;
+}
+.pets__slider-button {
+  margin-bottom: 30px;
+  padding: 13px 43px;
+  border-radius: 100px;
+  border: 2px solid #f1cdb3;
+  background-color: transparent;
 
+  font-family: 'Georgia', serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px; 
+  letter-spacing: 0.06em;
+}
+.pets__main-button {
+  display: flex;
+  margin: 0 auto;
 
+  padding: 15px 45px;
+  border-radius: 100px;
+  border: none;
+  background-color: #f1cdb3;
 
-
-
+  font-family: 'Georgia', serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px; 
+  letter-spacing: 0.06em;
+}
 
 
 
