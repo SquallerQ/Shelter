@@ -16,8 +16,7 @@
     <div class="container">
       <div class="header__inner">
         <div class="header-top">
-          <a href="#">
-
+          <a href="#!">
             <div class="header-top__logo">
               <h1 class="header-top__logo-title">Cozy House</h1>
               <p class="header-top__logo-subtitle">Shelter for pets in Boston</p>
@@ -27,17 +26,17 @@
             <nav class="header-top__menu-list">
               <ul class="header-top__menu-items">
 
-                <li class="header-top__menu-item">
-                  <a href="#" class="header-top__menu-link">About the shelter</a>
+                <li class="header-top__menu-item header-top__menu-item--active">
+                  About the shelter
                 </li>
                 <li class="header-top__menu-item">
-                  <a href="#" class="header-top__menu-link">Our pets</a>
+                  <a href="../pets/index.html" class="header-top__menu-link">Our pets</a>
                 </li>
                 <li class="header-top__menu-item">
-                  <a href="#" class="header-top__menu-link">Help the shelter</a>
+                  <a href="#help" class="header-top__menu-link">Help the shelter</a>
                 </li>
                 <li class="header-top__menu-item">
-                  <a href="#" class="header-top__menu-link">Contacts</a>
+                  <a href="#footer" class="header-top__menu-link">Contacts</a>
                 </li>
               </ul>
             </nav>
@@ -49,7 +48,9 @@
             <p class="header-main__content-text">We offer to give a chance to a little and nice puppy with an extremely
               wide and open heart. He or she will love you more
               than anybody else in the world, you will see!</p>
-            <button class="header-main__content-button">Make a friend</button>
+              <a href="#pets" class="header-main__content-button">
+                Make a friend
+              </a>
           </div>
           <div class="header-main__img">
             <img src="../../assets/images/main-image.png" alt="main image">
@@ -83,7 +84,7 @@
         </div>
       </div>
     </section>
-    <section class="pets">
+    <section id="pets" class="pets">
       <div class="container">
         <div class="pets__inner">
 
@@ -112,13 +113,16 @@
             </div>
             <div class="pets__slider-arrow pets__slider-arrow--right"></div>
           </div>
-
-          <button class="pets__main-button">Get to know the rest</button>
+          <div class="pets__main-button-wrapper">
+            <a href="../pets/index.html" class="pets__main-button">
+              Get to know the rest
+            </a>
+          </div>
         </div>
       </div>
 
     </section>
-    <section class="help">
+    <section id="help" class="help">
       <div class="container">
         <h3 class="help__title">How you can help<br>
           our shelter</h3>
@@ -171,7 +175,7 @@
           <div class="donation__content">
             <h3 class="donation__content-title">You can also<br> make a donation</h3>
             <h5 class="donation__content-subtitle">Name of the bank / Type of bank account</h5>
-            <a class="donation__content-button" href="##">
+            <a class="donation__content-button" href="#!">
               <img src="../../assets/icons/credit-card.svg" alt="credit-card image">
               <span>8380 2880 8028 8791 7435</span>
             </a>
@@ -185,7 +189,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer">
+  <footer id="footer" class="footer">
     <div class="container">
       <div class="footer__inner">
         <div class="footer__column">

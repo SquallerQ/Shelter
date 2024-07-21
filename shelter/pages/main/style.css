@@ -54,6 +54,9 @@ a {
 }
 
 /* global */
+html {
+  scroll-behavior: smooth;
+}
 html, body {
   height: 100%;
 }
@@ -74,10 +77,12 @@ main {
 }
 @font-face {
   font-family: "Arial";
+  font-display: swap;
   src: url('../../assets/fonts/arial.woff2') format("woff2");
 }
 @font-face {
   font-family: "Georgia";
+  font-display: swap;
   src: url('../../assets/fonts/georgia.woff2') format("woff2");
 }
 
@@ -126,11 +131,18 @@ header {
   line-height: 24px;
   letter-spacing: 0.1px;
 }
+.header-top__menu-item:hover .header-top__menu-link{
+  transition: all 0.5s linear;
+  color: #f1cdb3;
+}
 .header-top__menu-item + .header-top__menu-item {
   margin-left: 35px;
 }
 .header-top__menu-link { 
   color: #fafafa;
+}
+.header-top__menu-item--active {
+  border-bottom: 3px solid #f1cdb3;
 }
 .header-main {
   display: flex;
@@ -161,7 +173,8 @@ header {
   color: #cdcdcd;
 }
 .header-main__content-button {
-  padding: 15px 43px;
+  display: inline-flex;
+  padding: 15px 45px;
   font-family: 'Georgia', serif;
   font-size: 17px;
   font-weight: 400;
@@ -170,8 +183,13 @@ header {
   border-radius: 100px;
   color: #292929;
   background-color: #f1cdb3;
-}
+  cursor: pointer;
 
+  transition: all .3s ease;
+}
+.header-main__content-button:hover {
+  background-color: #fddcc4;
+}
 /* about styles */
 .about__inner {
   display: flex;
@@ -238,6 +256,13 @@ header {
   height: 52px;
   border-radius: 100%;
   border: 2px solid #f1cdb3;
+  cursor: pointer;
+
+  transition: all .2s linear;
+}
+.pets__slider-arrow:hover {
+  background-color: #fddcc4;
+  border: 2px solid #fddcc4;
 }
 .pets__slider-arrow--left {
   background-image: url('../../assets/icons/left-arrow.svg');
@@ -257,6 +282,16 @@ header {
   align-items: center;
   background-color: #fafafa;
   border-radius: 9px;
+
+  transition: all .3s linear;
+}
+.pets__slider-card:hover {
+  transform: scale(1.1);
+}
+.pets__slider-card:hover .pets__slider-button{
+  background-color: #fddcc4;
+  border: 2px solid #fddcc4;
+  cursor: pointer;
 }
 .pets__slider-image {
   margin-bottom: 30px;
@@ -283,9 +318,11 @@ header {
   line-height: 22px; 
   letter-spacing: 0.06em;
 }
+.pets__main-button-wrapper {
+  text-align: center;
+}
 .pets__main-button {
-  display: flex;
-  margin: 0 auto;
+  display: inline-flex;
 
   padding: 15px 45px;
   border-radius: 100px;
@@ -297,6 +334,13 @@ header {
   font-weight: 400;
   line-height: 22px; 
   letter-spacing: 0.06em;
+  color: #292929;
+  cursor: pointer;
+
+  transition: all .3s ease;
+}
+.pets__main-button:hover {
+  background-color: #fddcc4;
 }
 /* help styles */
 .help {
@@ -387,10 +431,17 @@ header {
   color: #545454;
 
   background-color: #f1cdb3;
+
+  transition: all .3s ease;
+}
+
+.donation__content-button:hover {
+  background-color: #fddcc4;
 }
 .donation__content-button span {
   margin-left: 15px;
 }
+
 .donation__content-text {
   font-family: 'Arial', sans-serif;
   font-size: 12px;
@@ -401,7 +452,7 @@ header {
 }
 /* footer styles */
 footer {
-  background: url('../../assets/images/noise_transparent@2x.png'), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 60%), #211F20;
+  background: url('../../assets/images/background--second.png'), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 60%), #211F20;
 }
 .footer__inner {
   padding-top: 40px;
@@ -435,6 +486,11 @@ footer {
   line-height: 23px;
   letter-spacing: 0.06em;
   color: #f1cdb3;
+
+  transition: all .2s linear;
+}
+.footer__column-email:hover, .footer__column-telephone:hover, .footer__column-location:hover {
+  color: #fafafa;
 }
 .footer__column-email p, .footer__column-telephone p, .footer__column-location p {
   margin-left: 20px;
