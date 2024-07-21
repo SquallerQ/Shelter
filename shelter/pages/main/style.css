@@ -87,7 +87,7 @@ main {
 }
 
 /* header styles */
-header {
+.header {
   background: url('../../assets/images/background.png'), url('../../assets/images/background--second.png'), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 70%)  #211F20;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
@@ -98,6 +98,12 @@ header {
   align-items: center;
   margin-top: 30px;
   margin-bottom: 82px;
+}
+.header-top__logo:hover .header-top__logo-title {
+  color: #ffffff;
+}
+.header-top__logo:hover .header-top__logo-subtitle {
+  color: #f1cdb3;
 }
 .header-top__logo-title {
   font-family: 'Georgia', serif;
@@ -285,8 +291,8 @@ header {
 
   transition: all .3s linear;
 }
-.pets__slider-card:hover {
-  transform: scale(1.1);
+.pets__slider-card:hover .pets__slider-text{
+  color: #000;
 }
 .pets__slider-card:hover .pets__slider-button{
   background-color: #fddcc4;
