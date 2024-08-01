@@ -351,3 +351,5 @@ body {
 .footer__column-location:nth-of-type(1) {
   margin: 32px 0 33px 0; 
 }
+
+@import 'media';

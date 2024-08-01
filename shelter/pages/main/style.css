@@ -348,6 +348,7 @@ body {
   letter-spacing: 0.06em;
 
   transition: all .3s linear;
+  cursor: pointer;
 }
 .pets__main-button-wrapper {
   text-align: center;
