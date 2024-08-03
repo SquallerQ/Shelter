@@ -287,6 +287,12 @@ body {
   background-color: #fddcc4;
   border: 2px solid #fddcc4;
 }
+.pets__slider-arrow_wrapper--first {
+  margin-right: 12px;
+}
+.pets__slider-arrow_wrapper--second {
+  margin-left: 12px;
+}
 .pets__slider-arrow--left {
   background-image: url('../../assets/icons/left-arrow.svg');
 }
@@ -294,7 +300,6 @@ body {
   background-image: url('../../assets/icons/right-arrow.svg');
 }
 .pets__slider-cards {
-  padding: 0 53px;
   display: flex;
   gap: 90px;
   justify-content: space-between;

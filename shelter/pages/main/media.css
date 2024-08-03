@@ -1,8 +1,10 @@
-/* header */
-@media (max-width: 1050px) {
+@media (max-width: 1050px)  {
   .container {
     padding: 0 30px;
   }
+}
+/* header */
+@media (max-width: 1050px) {
   .header-top {
     margin-bottom: 53px;
   }
@@ -43,9 +45,7 @@
   }
 }
 
-
 /* about styles */
-
 @media (max-width: 1050px) {
   .about__inner {
     flex-direction: column;
@@ -65,5 +65,18 @@
 @media (max-width: 768px) {
   .about__content {
     max-width: 430px;
+  }
+}
+
+/* pets styles */
+@media (max-width: 1050px) {
+  .pets__inner {
+    padding: 81px 0px 100px 0px;
+  }
+  .pets__slider-cards {
+    gap: 40px; 
+  }
+  .pets__slider-card:last-child {
+    display: none;
   }
 }
