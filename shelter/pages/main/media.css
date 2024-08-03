@@ -90,3 +90,19 @@
     width: 170px;
   }
 }
+
+/* donation styles */
+@media (max-width: 1250px) {
+  .donation__inner {
+    flex-direction: column;
+    padding: 82px 160px 100px 143px;
+  }
+  .donation__image {
+    margin-left: 16px;
+  }
+  .donation__content {
+    order: -1;
+    margin-left: 2px;
+    margin-bottom: 60px;
+  }
+}
