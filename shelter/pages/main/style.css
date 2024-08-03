@@ -500,7 +500,7 @@ footer {
   display: flex;
   flex-direction: column;
 }
-.footer__column:nth-of-type(2) {
+.footer__column-second {
   margin-left: -8px;
 }
 .footer__column-title {
