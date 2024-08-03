@@ -80,3 +80,13 @@
     display: none;
   }
 }
+
+/* help styles */
+@media (max-width: 1050px) {
+  .help__items {
+    column-gap: 60px;
+  }
+  .help__item {
+    width: 170px;
+  }
+}
