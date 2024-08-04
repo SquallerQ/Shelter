@@ -8,6 +8,7 @@
   <title>Shelter</title>
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="media.css">
   <script src="script.js" defer></script>
 </head>
 
@@ -40,6 +41,11 @@
                 </li>
               </ul>
             </nav>
+            <div class="burger-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
         </div>
         <section class="header-main">
@@ -92,7 +98,9 @@
           <h3 class="pets__title">Our friends who<br>
             are looking for a house</h3>
           <div class="pets__slider">
-            <div class="pets__slider-arrow pets__slider-arrow--left"></div>
+            <div class="pets__slider-arrow_wrapper--first">
+              <div class="pets__slider-arrow pets__slider-arrow--left"></div>
+            </div>
             <div class="pets__slider-cards">
               <div class="pets__slider-card">
                 <img src="../../assets/images/pets/pets-katrine.png" alt="slider image" class="pets__slider-image">
@@ -110,7 +118,9 @@
                 <button class="pets__slider-button">Learn more</button>
               </div>
             </div>
-            <div class="pets__slider-arrow pets__slider-arrow--right"></div>
+            <div class="pets__slider-arrow_wrapper--second">
+              <div class="pets__slider-arrow pets__slider-arrow--right"></div>
+            </div>
           </div>
           <div class="pets__main-button-wrapper">
             <a href="../pets/index.html" class="pets__main-button">
@@ -191,8 +201,8 @@
   <footer id="footer" class="footer">
     <div class="container">
       <div class="footer__inner">
-        <div class="footer__column">
-          <h3 class="footer__column-title">For questions<br> and suggestions</h3>
+        <div class="footer__column footer__column-first">
+          <h3 class="footer__column-title">For questions and suggestions</h3>
           <a class="footer__column-email" href="mailto:email@shelter.com">
             <img src="../../assets/icons/email.svg" alt="email icon">
             <p>email@shelter.com</p>
@@ -203,8 +213,8 @@
           </a>
         </div>
 
-        <div class="footer__column">
-          <h3 class="footer__column-title">We are waiting<br> for your visit</h3>
+        <div class="footer__column footer__column-second">
+          <h3 class="footer__column-title">We are waiting for your visit</h3>
           <a class="footer__column-location" href="https://maps.app.goo.gl/Pu1XNiuhU7yrJF3N9" target="_blank">
             <img src="../../assets/icons/location.svg" alt="location icon">
             <p>1 Central Street, Boston<br> (entrance from the store)</p>           
@@ -215,7 +225,7 @@
           </a>
         </div>
 
-        <div class="footer__column">
+        <div class="footer__column footer__column-dog">
           <img src="../../assets/images/footer-image.png" alt="footer image">
         </div>
 
