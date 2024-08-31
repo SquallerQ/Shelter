@@ -1,14 +1,51 @@
-console.log(`
-14+14+14+6+6+6+20+8+4+8 = 100
+// Burger
+const burgerMenu = document.querySelector('.header-top__menu-list');
+const burgerButton = document.querySelector('.burger-button');
+const bodyForScrollAndShadow = document.querySelector('body');
+let menuIsActive 
 
-+14 ------ Вёрстка страницы Main соответствует макету при ширине экрана 1280px ------
-+14 ------ Вёрстка страницы Main соответствует макету при ширине экрана 768px  ------
-+14 ------ Вёрстка страницы Main соответствует макету при ширине экрана 320px  ------
-+6  ------ Вёрстка страницы Pets соответствует макету при ширине экрана 1280px ------
-+6  ------ Вёрстка страницы Pets соответствует макету при ширине экрана 768px  ------
-+6  ------ Вёрстка страницы Pets соответствует макету при ширине экрана 320px  ------
-+20 ------ Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки, справа от отдельных блоков не появляются белые поля. Весь контент страницы при этом сохраняется: не обрезается и не удаляется ------
-+8  ------ Верстка резиновая: при плавном изменении размера экрана от 1280px до 320px верстка подстраивается под этот размер, элементы верстки меняют свои размеры и расположение, не наезжают друг на друга, изображения могут менять размер, но сохраняют правильные пропорции ------
-+4  ------ При ширине экрана меньше 768px на обеих страницах меню в хедере скрывается, появляется иконка бургер-меню
-+8 ------ Верстка обеих страниц валидная: для проверки валидности вёрстки используйте сервис https://validator.w3.org/ ------
-`);
+//Click on burger button
+burgerButton.addEventListener('click', function () {
+  // If burgerMenu havent class active, add this class. Open menu
+  if (!burgerMenu.classList.contains('header-top__menu-list--active')) {
+    // Open menu
+    burgerMenu.classList.add('header-top__menu-list--active');
+    // Turn burger button
+    burgerButton.classList.add('burger-button--active');
+    // Add shadow on page
+    bodyForScrollAndShadow.classList.add("header--shadow");
+    // Disable scrolling
+    bodyForScrollAndShadow.style.overflow = "hidden";
+
+    // Save to variable information about menu
+    menuIsActive = document.querySelector('.header-top__menu-list--active'); 
+  } else {
+    // Close menu
+    burgerMenu.classList.remove('header-top__menu-list--active');
+    // Turn off burger button
+    burgerButton.classList.remove('burger-button--active');
+    // Remove shadow
+    bodyForScrollAndShadow.classList.remove("header--shadow");
+    // Enable scroll
+    bodyForScrollAndShadow.style.overflow = "";
+    // Reset variable
+    menuIsActive = null;
+  }  
+})
+
+// Listen document
+document.addEventListener('click', function (event) {
+  // If the click is not on a button or a menu
+  if (event.target !== menuIsActive && !event.target.closest('.burger-button')) {
+    // Close menu
+    burgerMenu.classList.remove('header-top__menu-list--active');
+    // Turn off burger button
+    burgerButton.classList.remove('burger-button--active');
+    // Remove shadow
+    bodyForScrollAndShadow.classList.remove("header--shadow");
+    // Enable scroll
+    bodyForScrollAndShadow.style.overflow = "";
+    // Reset variable
+    menuIsActive = null;
+  }
+})
