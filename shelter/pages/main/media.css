@@ -251,7 +251,7 @@
     line-height: 32px;
     margin: 0 -10px;
   }
-  .pets__slider-card:nth-child(2){
+  .pets__slider-card:nth-child(even) {
     display: none;
   }
   .pets__slider {
