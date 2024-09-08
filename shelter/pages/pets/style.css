@@ -366,20 +366,23 @@ footer {
 
 .modal-close {
   position: absolute;
-  top: 10px;
-  right: 20px;
   font-size: 28px;
   cursor: pointer;
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   border: 2px solid #f1cdb3;
   color: #292929;
   border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  right: -48px;
+  right: -40px;
   top: -48px;
+  transition: .3s all;
+}
+.modal-close:hover {
+  background-color: #f1cdb3;
+  transition: .3s all;
 }
 
 .modal-content {

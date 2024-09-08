@@ -252,8 +252,8 @@
 @media (max-width: 765px) {
   .modal-content {
     margin: 14% auto;
-    width: 280px;
-    height: 400px;
+    max-width: 240px;
+    height: auto;
     text-align: center;
   }
   .modal__img-container {
