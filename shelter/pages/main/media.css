@@ -72,10 +72,11 @@
     transform: translateX(0px);
   }
   ul.header-top__menu-items{
-    height: 100%;
-    margin-top: 272px;
+    /* height: 100%; */
+    /* margin-top: 272px; */
     align-items: center;
     flex-direction: column;
+    margin: auto;
   }
   .header-top__menu-item {
     font-size: 32px;
@@ -85,8 +86,8 @@
   }
   .header-top__menu-item--active {
     text-align: center;
-    padding-bottom: 28px;
-    margin-bottom: 18px;
+    padding-top: 40px;
+    margin-bottom: 40px;
 
     border-bottom: none;
     position: relative;
@@ -94,7 +95,7 @@
   .header-top__menu-item--active::before {
     content: '';
     position: absolute;
-    top: 24px;
+    top: 80px;
     width: 243px;
     height: 3px;
     background-color: #f1cdb3;
