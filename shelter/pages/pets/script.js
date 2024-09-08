@@ -284,11 +284,6 @@ function renderCards() {
               <img src="${cardData.img}" alt="pets image" class="pets__image">
               <p class="pets__text">${cardData.name}</p>
               <button class="pets__button">Learn more</button>`;
-                  // Add event listener to open modal when card is clicked
-    // element.addEventListener("click", () => {
-    //   openModal(cardData);
-    // });
-
       petsCardsContainer.append(element);
   });
 }

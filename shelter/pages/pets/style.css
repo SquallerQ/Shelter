@@ -399,7 +399,7 @@ footer {
   width: 500px;
 }
 .modal-img {
-  width: 500px;
+  max-width: 500px;
   height: 500px;
 }
 .modal__info-container {
@@ -422,15 +422,25 @@ footer {
 }
 .modal__description {
   font-size: 15px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   margin-top: 40px;
   max-width: 350px;
   line-height: 16px;
   font-style: normal;
+  letter-spacing: 0.06em;
 }
+.modal__list li {
+  margin-bottom: 10px;
+}
+.modal__list li::before {
+    color: #f1cdb3; 
+    content: "▪"; 
+    padding-right: 15px; 
+  }
 .modal__span {
   font-size: 15px;
   line-height: 16px;
+  margin-bottom: 10px;  
 }
 
 .scroll-block {

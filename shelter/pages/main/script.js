@@ -208,6 +208,9 @@ function renderCards (numberOfSlides, array) {
                   <img src="${newArrayForThreeCards[i].img}" alt="slider image" class="pets__slider-image">
                   <p class="pets__slider-text">${newArrayForThreeCards[i].name}</p>
                   <button class="pets__slider-button">Learn more</button>`;
+    element.addEventListener("click", () => {
+      openModal(newArrayForThreeCards[i]);
+    });
     cardsContainer.append(element);
   }
   previousStateOnScreen.push(...newArrayForThreeCards);
@@ -264,6 +267,9 @@ function createNewCards (numberOfSlides, array, restArray) {
                   <img src="${newArrayForThreeCards[i].img}" alt="slider image" class="pets__slider-image">
                   <p class="pets__slider-text">${newArrayForThreeCards[i].name}</p>
                   <button class="pets__slider-button">Learn more</button>`;
+        element.addEventListener("click", () => {
+          openModal(newArrayForThreeCards[i]);
+        });
        cardsContainer.append(element);
      }
      
@@ -292,6 +298,9 @@ function lastState (previousThreeCards) {
     <img src="${previousThreeCards[i].img}" alt="slider image" class="pets__slider-image">
     <p class="pets__slider-text">${previousThreeCards[i].name}</p>
     <button class="pets__slider-button">Learn more</button>`;
+    element.addEventListener("click", () => {
+      openModal(previousThreeCards[i]);
+    });
     cardsContainer.append(element);
   }
 }
@@ -425,11 +434,81 @@ buttonLeft.addEventListener("click", function () {
 
 
 
+// function renderCards() {
+//   petsCardsContainer.innerHTML = "";
+
+//   const startIdx = (currentPage - 1) * cardsPerPage;
+//   const endIdx = startIdx + cardsPerPage;
+//   const currentCards = Main.slice(startIdx, endIdx);
+
+//   currentCards.forEach((cardNumber) => {
+//     const cardData = GLOBAL_ARRAY[cardNumber - 1];
+
+//     let element = document.createElement("div");
+//     element.className = "pets__card";
+//     element.innerHTML = `
+//               <img src="${cardData.img}" alt="pets image" class="pets__image">
+//               <p class="pets__text">${cardData.name}</p>
+//               <button class="pets__button">Learn more</button>`;
+//     petsCardsContainer.append(element);
+//   });
+// }
 
 
 
+// cardsContainer.addEventListener("click", function (event) {
+//   let card = event.target.closest(".pets__slider-card");
 
+//   if (card) {
+//     const cardIndex = Array.from(cardsContainer.children).indexOf(card);
+//     const cardNumber = Main[cardIndex];
+//     const cardData = GLOBAL_ARRAY[cardNumber - 1];
 
+//     openModal(cardData);
+//   }
+// });
+
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+const modalName = document.getElementById("modal-name");
+const modalType = document.getElementById("modal-type");
+const modalBreed = document.getElementById("modal-breed");
+const modalDescription = document.getElementById("modal-description");
+const modalAge = document.getElementById("modal-age");
+const modalInoculations = document.getElementById("modal-inoculations");
+const modalDiseases = document.getElementById("modal-diseases");
+const modalParasites = document.getElementById("modal-parasites");
+
+const closeModalBtn = document.querySelector(".modal-close");
+
+function openModal(cardData) {
+  modal.style.display = "block";
+
+  modalImg.src = cardData.img;
+  modalName.textContent = cardData.name;
+  modalType.textContent = cardData.type;
+  modalBreed.textContent = cardData.breed;
+  modalDescription.textContent = cardData.description;
+  modalAge.textContent = cardData.age;
+  modalInoculations.textContent = cardData.inoculations;
+  modalDiseases.textContent = cardData.diseases;
+  modalParasites.textContent = cardData.parasites;
+
+  document.body.classList.add("scroll-block");
+}
+
+function closeModal() {
+  modal.style.display = "none";
+  document.body.classList.remove("scroll-block");
+}
+
+closeModalBtn.addEventListener("click", closeModal);
+
+window.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    closeModal();
+  }
+});
 
 
 
