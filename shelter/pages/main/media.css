@@ -493,3 +493,18 @@
     text-align: left;
   }
 }
+@media (max-width: 650px) {
+    .modal-content {
+    margin: 20% auto;
+  }
+}
+@media (max-width: 450px) {
+    .modal-content {
+    margin: 25% auto;
+  }
+}
+@media (max-width: 320px) {
+    .modal-content {
+    margin: 35% auto;
+  }
+}
