@@ -12,7 +12,7 @@
   <script src="script.js" defer></script>
 </head>
 
-<body>
+<body class="body">
   <header class="header">
     <div class="container">
       <div class="header__inner">
@@ -84,6 +84,29 @@
               <button class="pets__pagination-button pets__pagination-item--last btn__enabled"> >> </button>
             </li>
           </ul>
+        </div>
+      </div>
+
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="modal-close">&times;</span>
+          <div class="modal__inner">
+
+            <div class="modal__img-container">
+              <img class="modal-img" id="modal-img" src="" alt="Animal Image" />
+            </div>
+            <div class="modal__info-container">
+              <h3 id="modal-name" class="modal__name">Name</h3>
+              <span id="modal-type" class="modal__type">Type</span> - <span id="modal-breed" class="modal__breed">Breed</span>
+              <p id="modal-description" class="modal__description">Description</p>
+                <ul>
+                  <li><strong>Age:</strong><span id="modal-age" class="modal__span">Age</span></li>
+                  <li><strong>Inoculations: </strong><span id="modal-inoculations" class="modal__span">Inoculations</span></li>
+                  <li><strong>Diseases: </strong><span id="modal-diseases" class="modal__span">Diseases</span></li>
+                  <li><strong>Parasites: </strong><span id="modal-parasites" class="modal__span">Parasites</span> </li>
+                </ul>
+            </div>
+          </div>
         </div>
       </div>
 

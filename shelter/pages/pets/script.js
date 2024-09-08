@@ -284,9 +284,15 @@ function renderCards() {
               <img src="${cardData.img}" alt="pets image" class="pets__image">
               <p class="pets__text">${cardData.name}</p>
               <button class="pets__button">Learn more</button>`;
+                  // Add event listener to open modal when card is clicked
+    // element.addEventListener("click", () => {
+    //   openModal(cardData);
+    // });
+
       petsCardsContainer.append(element);
   });
 }
+
 function cardsOnPage() {
   const width = document.body.clientWidth;
     if (width > 768) {
@@ -306,7 +312,60 @@ function cardsOnPage() {
   updatePagination()
   renderCards();
 }
-window.addEventListener("resize", cardsOnPage);
+window.addEventListener('resize', cardsOnPage);
 cardsOnPage();
 
+petsCardsContainer.addEventListener("click", function (event) {
+  let card = event.target.closest(".pets__card");
 
+  if (card) {
+    const cardIndex = Array.from(petsCardsContainer.children).indexOf(card);
+    const cardNumber = Main[cardIndex];
+    const cardData = GLOBAL_ARRAY[cardNumber - 1];
+
+    openModal(cardData);
+  }
+});
+
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+const modalName = document.getElementById("modal-name");
+const modalType = document.getElementById("modal-type");
+const modalBreed = document.getElementById("modal-breed");
+const modalDescription = document.getElementById("modal-description");
+const modalAge = document.getElementById("modal-age");
+const modalInoculations = document.getElementById("modal-inoculations");
+const modalDiseases = document.getElementById("modal-diseases");
+const modalParasites = document.getElementById("modal-parasites");
+
+
+const closeModalBtn = document.querySelector(".modal-close");
+
+function openModal(cardData) {
+  modal.style.display = "block";
+
+  modalImg.src = cardData.img; 
+  modalName.textContent = cardData.name; 
+  modalType.textContent = cardData.type;
+  modalBreed.textContent = cardData.breed;
+  modalDescription.textContent = cardData.description;
+  modalAge.textContent = cardData.age;
+  modalInoculations.textContent = cardData.inoculations;
+  modalDiseases.textContent = cardData.diseases;
+  modalParasites.textContent = cardData.parasites;
+
+  document.body.classList.add("scroll-block");
+}
+
+function closeModal() {
+  modal.style.display = "none";
+  document.body.classList.remove("scroll-block");
+}
+
+closeModalBtn.addEventListener("click", closeModal);
+
+window.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    closeModal();
+  }
+});
