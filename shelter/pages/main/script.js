@@ -434,39 +434,11 @@ buttonLeft.addEventListener("click", function () {
 
 
 
-// function renderCards() {
-//   petsCardsContainer.innerHTML = "";
-
-//   const startIdx = (currentPage - 1) * cardsPerPage;
-//   const endIdx = startIdx + cardsPerPage;
-//   const currentCards = Main.slice(startIdx, endIdx);
-
-//   currentCards.forEach((cardNumber) => {
-//     const cardData = GLOBAL_ARRAY[cardNumber - 1];
-
-//     let element = document.createElement("div");
-//     element.className = "pets__card";
-//     element.innerHTML = `
-//               <img src="${cardData.img}" alt="pets image" class="pets__image">
-//               <p class="pets__text">${cardData.name}</p>
-//               <button class="pets__button">Learn more</button>`;
-//     petsCardsContainer.append(element);
-//   });
-// }
 
 
 
-// cardsContainer.addEventListener("click", function (event) {
-//   let card = event.target.closest(".pets__slider-card");
 
-//   if (card) {
-//     const cardIndex = Array.from(cardsContainer.children).indexOf(card);
-//     const cardNumber = Main[cardIndex];
-//     const cardData = GLOBAL_ARRAY[cardNumber - 1];
 
-//     openModal(cardData);
-//   }
-// });
 
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
@@ -509,9 +481,6 @@ window.addEventListener("click", (event) => {
     closeModal();
   }
 });
-
-
-
 
 
 
