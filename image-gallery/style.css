@@ -1,0 +1,80 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+a {
+  text-decoration: none;
+}
+@font-face {
+  font-family: 'Playwrite';
+  src: url('fonts/Playwrite-degrund.woff2') format("woff2"),
+       url('fonts/Playwrite-degrund.woff') format('woff'),
+       url('fonts/Playwrite-degrund.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-family: 'Playwrite', serif;
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  /* padding: 0 15px; */
+}
+.header {
+  border-bottom: 5px solid orange;
+
+}
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 50px;
+}
+.header__inner-title {
+  font-size: 28px;
+}
+.header__inner-logo {
+  display: flex;
+}
+.header__inner-search {
+  width: 350px;
+}
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 35px 8px 12px; 
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  background: url('images/search.svg');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+
+  outline: none; 
+  transition: border-color 0.3s ease;
+}
+.input:focus {
+  border: 1px solid orange;
+  box-shadow: 0 0 8px rgba(200, 122, 34, 0.859)
+}
