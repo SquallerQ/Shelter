@@ -4,7 +4,9 @@ const startUrl = 'https://api.unsplash.com/search/photos?query='
 const clientID = "&client_id=i6nsRp4ITZAjlv7J1AxJF0MyC5VwiLyE2KCgBrFae3I";
 const startSearch = 'spring'
 const input = document.querySelector('.input')
+const galleryContainer = document.querySelector('.gallery')
 console.log(input.value);
+
 
 async function getData(_startUrl, _clientID, search) {
   const res = await fetch(`${_startUrl}${search}${_clientID}&per_page=30`);
@@ -16,8 +18,6 @@ async function getData(_startUrl, _clientID, search) {
 }
 getData(startUrl, clientID, startSearch);
 
-
-
 function showData(data) {
   const gallery = document.querySelector('.gallery')
     let element = document.createElement("img");
@@ -25,3 +25,17 @@ function showData(data) {
     element.classList.add("image");
     gallery.append(element);
 }
+
+// function search () {
+
+
+// }
+
+input.addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    // search(input.value);
+    galleryContainer.innerHTML = ''
+    console.log(input.value);
+    getData(startUrl, clientID, input.value);
+  }
+})
