@@ -67,17 +67,13 @@ main {
 }
 .header__inner-search {
   width: 350px;
+  position: relative;
 }
 .input {
   width: 100%;
-  box-sizing: border-box;
   padding: 8px 35px 8px 12px; 
   border-radius: 25px;
   border: 1px solid #ddd;
-  background: url('icons/search.svg');
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 16px 16px;
 
   outline: none; 
   transition: border-color 0.3s ease;
@@ -85,6 +81,24 @@ main {
 .input:focus {
   border: 1px solid orange;
   box-shadow: 0 0 8px rgba(200, 122, 34, 0.859)
+}
+.input__icon {
+  content: '';
+  position: absolute;
+  background-image: url('icons/search.svg');
+  background-size: cover;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+
+  transition: all 0.3s ease
+}
+.input__icon:hover {
+  background-image: url('icons/search-active.svg');
+  transition: all 0.3s ease
 }
 
 .gallery {

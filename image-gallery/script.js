@@ -5,6 +5,7 @@ const clientID = "&client_id=i6nsRp4ITZAjlv7J1AxJF0MyC5VwiLyE2KCgBrFae3I";
 const startSearch = 'spring'
 const input = document.querySelector('.input')
 const galleryContainer = document.querySelector('.gallery')
+const searchButton = document.querySelector('.input__icon')
 console.log(input.value);
 
 
@@ -33,9 +34,14 @@ function showData(data) {
 
 input.addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
-    // search(input.value);
     galleryContainer.innerHTML = ''
-    console.log(input.value);
+    // console.log(input.value);
     getData(startUrl, clientID, input.value);
   }
 })
+searchButton.addEventListener('click', function () {
+  galleryContainer.innerHTML = "";
+  getData(startUrl, clientID, input.value);
+})
+
+
