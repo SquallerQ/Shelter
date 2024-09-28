@@ -7,7 +7,7 @@ const input = document.querySelector('.input')
 const galleryContainer = document.querySelector('.gallery')
 const searchButton = document.querySelector('.input__icon')
 const searchCloseButton = document.querySelector('.input__icon-close')
-console.log(input.value);
+const infoBlock = document.querySelector('.info-container')
 
 
 async function getData(_startUrl, _clientID, search) {
@@ -32,18 +32,22 @@ function showData(data) {
 input.addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
     if (input.value === '') {
+      infoBlock.style.display = 'flex'
       return;
     } else {
       galleryContainer.innerHTML = ''
+      infoBlock.style.display = 'none'
       getData(startUrl, clientID, input.value);
     }
   }
 })
 searchButton.addEventListener('click', function () {
   if (input.value === '') {
+    infoBlock.style.display = 'flex'
     return;
   } else {
     galleryContainer.innerHTML = ''
+    infoBlock.style.display = 'none'
     getData(startUrl, clientID, input.value);
   }
 })
