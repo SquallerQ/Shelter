@@ -6,6 +6,7 @@ const startSearch = 'spring'
 const input = document.querySelector('.input')
 const galleryContainer = document.querySelector('.gallery')
 const searchButton = document.querySelector('.input__icon')
+const searchCloseButton = document.querySelector('.input__icon-close')
 console.log(input.value);
 
 
@@ -27,21 +28,35 @@ function showData(data) {
     gallery.append(element);
 }
 
-// function search () {
-
-
-// }
 
 input.addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
-    galleryContainer.innerHTML = ''
-    // console.log(input.value);
-    getData(startUrl, clientID, input.value);
+    if (input.value === '') {
+      return;
+    } else {
+      galleryContainer.innerHTML = ''
+      getData(startUrl, clientID, input.value);
+    }
   }
 })
 searchButton.addEventListener('click', function () {
-  galleryContainer.innerHTML = "";
-  getData(startUrl, clientID, input.value);
+  if (input.value === '') {
+    return;
+  } else {
+    galleryContainer.innerHTML = ''
+    getData(startUrl, clientID, input.value);
+  }
 })
 
+input.addEventListener('input', function() {
+  if (input.value !== '') {
+    searchCloseButton.style.display = 'block'
+  } else {
+    searchCloseButton.style.display = 'none'
+  }
+});
 
+searchCloseButton.addEventListener('click', function () {
+  input.value = ''
+  searchCloseButton.style.display = 'none'
+})

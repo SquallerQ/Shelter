@@ -71,7 +71,7 @@ main {
 }
 .input {
   width: 100%;
-  padding: 8px 35px 8px 12px; 
+  padding: 8px 35px 8px 15px; 
   border-radius: 25px;
   border: 1px solid #ddd;
 
@@ -100,7 +100,25 @@ main {
   background-image: url('icons/search-active.svg');
   transition: all 0.3s ease
 }
+.input__icon-close {
+  content: '';
+  position: absolute;
+  background-image: url('icons/input-close.svg');
+  background-size: cover;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 0.3s ease;
 
+  display: none;
+}
+.input__icon-close:hover {
+  background-image: url('icons/input-close-active.svg');
+  transition: all 0.3s ease
+}
 .gallery {
   padding: 15px 150px;
   width: 100%;
@@ -148,3 +166,4 @@ main {
   width: 45px;
   height: 45px;
 }
+
