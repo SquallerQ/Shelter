@@ -1,12 +1,16 @@
 const startUrl = 'https://api.unsplash.com/search/photos?query='
 const clientID = "&client_id=i6nsRp4ITZAjlv7J1AxJF0MyC5VwiLyE2KCgBrFae3I";
-const startSearch = 'spring'
-const input = document.querySelector('.input')
-const galleryContainer = document.querySelector('.gallery')
-const searchButton = document.querySelector('.input__icon')
-const searchCloseButton = document.querySelector('.input__icon-close')
-const infoBlock = document.querySelector('.info-container')
-const info = document.querySelector('.info')
+const startSearch = 'spring';
+const input = document.querySelector('.input');
+const galleryContainer = document.querySelector('.gallery');
+const searchButton = document.querySelector('.input__icon');
+const searchCloseButton = document.querySelector('.input__icon-close');
+const infoBlock = document.querySelector('.info-container');
+const info = document.querySelector('.info');
+
+const body = document.querySelector('body');
+const modal = document.querySelector(".modal");
+const closeModalBtn = document.querySelector(".close-modal");
 
 
 async function renderPage(_startUrl, _clientID, search) {
@@ -17,7 +21,7 @@ async function renderPage(_startUrl, _clientID, search) {
   }
   const data = await res.json()
 
-
+  console.log(data);
   if (data.results.length === 0) {
     infoBlock.style.display = 'flex';
     info.textContent = 'No results found';
@@ -40,6 +44,10 @@ function createElements(data) {
     element.src = data;
     element.classList.add("image");
     gallery.append(element);
+
+    element.addEventListener("click", function () {
+      modalOpen(data);
+    });
 }
 
 
@@ -81,3 +89,23 @@ searchCloseButton.addEventListener('click', function () {
 window.onload = function () {
   input.focus();
 };
+
+function modalOpen (src) {
+  const modal = document.querySelector('.modal')
+  const modalContent = document.querySelector('.modal-content')
+
+  body.style.overflow = 'hidden'
+  modal.style.display = 'block'
+  modalContent.src = src
+}
+
+closeModalBtn.addEventListener('click', function () {
+  modal.style.display = 'none'
+  body.style.overflow = ''
+})
+window.addEventListener('click', function(event) {
+  if (event.target === modal) {
+    modal.style.display = 'none'
+    body.style.overflow = ''
+  }
+})
