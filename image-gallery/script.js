@@ -1,5 +1,3 @@
-// const url = 'https://api.unsplash.com/search/photos?query=spring&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo&per_page=30'
-
 const startUrl = 'https://api.unsplash.com/search/photos?query='
 const clientID = "&client_id=i6nsRp4ITZAjlv7J1AxJF0MyC5VwiLyE2KCgBrFae3I";
 const startSearch = 'spring'
@@ -8,19 +6,35 @@ const galleryContainer = document.querySelector('.gallery')
 const searchButton = document.querySelector('.input__icon')
 const searchCloseButton = document.querySelector('.input__icon-close')
 const infoBlock = document.querySelector('.info-container')
+const info = document.querySelector('.info')
 
 
-async function getData(_startUrl, _clientID, search) {
+async function renderPage(_startUrl, _clientID, search) {
+  try {
   const res = await fetch(`${_startUrl}${search}${_clientID}&per_page=30`);
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
   const data = await res.json()
-  // console.log(data.results[0].urls.regular);
-    for (let i = 0; i < 30; i++) {
-      showData(data.results[i].urls.regular);
-    }
-}
-getData(startUrl, clientID, startSearch);
 
-function showData(data) {
+
+  if (data.results.length === 0) {
+    infoBlock.style.display = 'flex';
+    info.textContent = 'No results found';
+    return;
+  }
+  for (let i = 0; i < data.results.length; i++) {
+    createElements(data.results[i].urls.regular);
+  }
+  } catch (error) {
+    console.error(error);
+    infoBlock.style.display = 'flex';
+    info.textContent = 'Error fetching data. Please try again later.';
+  }
+}
+renderPage(startUrl, clientID, startSearch);
+
+function createElements(data) {
   const gallery = document.querySelector('.gallery')
     let element = document.createElement("img");
     element.src = data;
@@ -37,7 +51,7 @@ input.addEventListener('keypress', function (e) {
     } else {
       galleryContainer.innerHTML = ''
       infoBlock.style.display = 'none'
-      getData(startUrl, clientID, input.value);
+      renderPage(startUrl, clientID, input.value);
     }
   }
 })
@@ -48,7 +62,7 @@ searchButton.addEventListener('click', function () {
   } else {
     galleryContainer.innerHTML = ''
     infoBlock.style.display = 'none'
-    getData(startUrl, clientID, input.value);
+    renderPage(startUrl, clientID, input.value);
   }
 })
 
@@ -64,3 +78,6 @@ searchCloseButton.addEventListener('click', function () {
   input.value = ''
   searchCloseButton.style.display = 'none'
 })
+window.onload = function () {
+  input.focus();
+};
