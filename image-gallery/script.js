@@ -9,8 +9,8 @@ const infoBlock = document.querySelector('.info-container');
 const info = document.querySelector('.info');
 
 const body = document.querySelector('body');
-const modal = document.querySelector(".modal");
-const closeModalBtn = document.querySelector(".close-modal");
+const modal = document.querySelector('.modal');
+const closeModalBtn = document.querySelector('.close-modal');
 
 
 async function renderPage(_startUrl, _clientID, search) {
@@ -21,9 +21,9 @@ async function renderPage(_startUrl, _clientID, search) {
   }
   const data = await res.json()
 
-  console.log(data);
   if (data.results.length === 0) {
     infoBlock.style.display = 'flex';
+    galleryContainer.innerHTML = ''
     info.textContent = 'No results found';
     return;
   }
@@ -53,24 +53,26 @@ function createElements(data) {
 
 input.addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
+    galleryContainer.innerHTML = ''
     if (input.value === '') {
       infoBlock.style.display = 'flex'
       return;
     } else {
-      galleryContainer.innerHTML = ''
       infoBlock.style.display = 'none'
       renderPage(startUrl, clientID, input.value);
     }
   }
 })
 searchButton.addEventListener('click', function () {
+  galleryContainer.innerHTML = ''
   if (input.value === '') {
     infoBlock.style.display = 'flex'
+    input.focus();
     return;
   } else {
-    galleryContainer.innerHTML = ''
     infoBlock.style.display = 'none'
     renderPage(startUrl, clientID, input.value);
+    input.focus();
   }
 })
 
@@ -85,6 +87,7 @@ input.addEventListener('input', function() {
 searchCloseButton.addEventListener('click', function () {
   input.value = ''
   searchCloseButton.style.display = 'none'
+  input.focus();
 })
 window.onload = function () {
   input.focus();
