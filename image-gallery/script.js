@@ -96,19 +96,23 @@ window.onload = function () {
 function modalOpen (src) {
   const modal = document.querySelector('.modal')
   const modalContent = document.querySelector('.modal-content')
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
   body.style.overflow = 'hidden'
+  body.style.paddingRight = `${scrollbarWidth}px`;
   modal.style.display = 'block'
   modalContent.src = src
 }
 
 closeModalBtn.addEventListener('click', function () {
   modal.style.display = 'none'
+  document.body.style.paddingRight = '';
   body.style.overflow = ''
 })
 window.addEventListener('click', function(event) {
   if (event.target === modal) {
     modal.style.display = 'none'
+    document.body.style.paddingRight = '';
     body.style.overflow = ''
   }
 })
