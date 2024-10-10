@@ -26,7 +26,7 @@ a {
   max-width: 1200px;
 }
 
-.game__inner {
+.game__container {
   margin-top: 80px;
   display: flex;
   align-items: center;
@@ -48,6 +48,9 @@ a {
   border: 1px solid #ccc;
 }
 
-.active {
+.active-box {
   background-color: aqua;
+}
+.constant-box {
+  background-color: orange;
 }

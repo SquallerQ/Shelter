@@ -21,9 +21,9 @@ const basicMatrix = [
 ];
 
 
-const sudokuGrid = document.querySelectorAll('.game__inner-row')
+const sudokuGrid = document.querySelector('.game__inner')
+const sudokuRows = document.querySelectorAll('.game__inner-row')
 const sudokuBox = document.querySelectorAll('.game__inner-box')
-const su = document.querySelector('.game__inner')
 
 // console.log(sudokuGrid);
 // for (let i = 0; i < basicMatrix.length; i++) {
@@ -36,36 +36,69 @@ const su = document.querySelector('.game__inner')
 // }
 
 
-function renderGrid() {
+function renderGrid () {
 
-  for (let i = 1; i < sudokuGrid.length + 1; i++) {
-    let a = document.querySelector(`.game__inner-row-${i}`);
-    let b = a.querySelectorAll(".game__inner-box");
-    for (let j = 0; j < b.length; j++) {
-      b[j].value = basicMatrix[i - 1][j];
+  for (let i = 1; i < sudokuRows.length + 1; i++) {
+    let row = document.querySelector(`.game__inner-row-${i}`);
+    let boxInRow = row.querySelectorAll(".game__inner-box");
+    for (let j = 0; j < boxInRow.length; j++) {
+      boxInRow[j].value = basicMatrix[i - 1][j];
     }
   }
+  console.log();
+
 }
 renderGrid();
 
-sudokuBox[0].addEventListener('click', function(item) {
-  sudokuBox[0].classList.add("active");
-})
-
-// if (sudokuBox[0].classList.contains('active') ) {
-  su.addEventListener('keypress', function(event) {
-    const currentValue = event.target.value;
-    console.log(currentValue);
-    event.target.classList.add('active')
-    console.log(event.target);
-    // sudokuBox[0].value = 0
-    if (event.keyCode > 48 && event.keyCode < 58) {
-      console.log('sdfsfsf');
-      event.target.value = event.key;
-    } else {
-      event.target.value = currentValue;
-    }
+sudokuGrid.addEventListener("click", function (event) { 
+  sudokuBox.forEach(function(item) {
+    item.classList.remove("active-box");
   })
+  event.target.classList.add("active-box");
+});
 
 
-  
+  sudokuGrid.addEventListener("keydown", function (event) {
+    if (event.keyCode > 48 && event.keyCode < 58) {
+      event.target.value = event.key;
+    } else if (event.keyCode === 8 || event.keyCode === 46) {
+      return event.preventDefault();
+    } else {
+      event.target.value = event.target.value;
+    }
+  });
+
+// function disabledBoxes(boxesCount) {
+//   const disabledBoxesOnARow = Math.round(boxesCount / 9)
+//   const ar = getRandomNumbers(disabledBoxesOnARow);
+//   console.log(ar);
+//     for (let i = 1; i < sudokuRows.length + 1; i++) {
+//       let row = document.querySelector(`.game__inner-row-${i}`);
+//       console.log(row);
+//       row.classList.add('active')
+//       let boxInRow = row.querySelectorAll(".game__inner-box");
+//       for (let j = 0; j < boxInRow.length; j++) {
+//         boxInRow[i][j].value = ar[i];
+//         console.log(boxInRow);
+//         // boxInRow[j].value = basicMatrix[i - 1][j];
+//       }
+//     }
+// }
+// disabledBoxes(35)
+
+// function getRandomNumbers(max) {
+//   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+//   const newArray = [];
+//   for (let i = 0; i < max; i++) {
+//     let randomElement = array[Math.floor(Math.random() * array.length)];
+//     console.log(randomElement);
+//     if (newArray.includes(randomElement)) {
+//       i = i - 1;
+//     } else {
+//       newArray.push(randomElement);
+//     }
+//   }
+//   return newArray;
+// }
+
+// console.log();
