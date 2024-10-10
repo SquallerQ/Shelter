@@ -23,7 +23,7 @@ const basicMatrix = [
 
 const sudokuGrid = document.querySelectorAll('.game__inner-row')
 const sudokuBox = document.querySelectorAll('.game__inner-box')
-
+const su = document.querySelector('.game__inner')
 
 // console.log(sudokuGrid);
 // for (let i = 0; i < basicMatrix.length; i++) {
@@ -40,15 +40,32 @@ function renderGrid() {
 
   for (let i = 1; i < sudokuGrid.length + 1; i++) {
     let a = document.querySelector(`.game__inner-row-${i}`);
-    console.log(basicMatrix[i - 1]);
     let b = a.querySelectorAll(".game__inner-box");
-    // console.log(b);
     for (let j = 0; j < b.length; j++) {
-      console.log(j);
-      console.log(b[j]);
-      console.log(basicMatrix[i - 1][j]);
-      b[j].innerHTML = basicMatrix[i - 1][j];
+      b[j].value = basicMatrix[i - 1][j];
     }
   }
 }
 renderGrid();
+
+sudokuBox[0].addEventListener('click', function(item) {
+  sudokuBox[0].classList.add("active");
+})
+
+// if (sudokuBox[0].classList.contains('active') ) {
+  su.addEventListener('keypress', function(event) {
+    const currentValue = event.target.value;
+    console.log(currentValue);
+    event.target.classList.add('active')
+    console.log(event.target);
+    // sudokuBox[0].value = 0
+    if (event.keyCode > 48 && event.keyCode < 58) {
+      console.log('sdfsfsf');
+      event.target.value = event.key;
+    } else {
+      event.target.value = currentValue;
+    }
+  })
+
+
+  
