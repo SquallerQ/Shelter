@@ -51,6 +51,6 @@ a {
 .active-box {
   background-color: aqua;
 }
-.constant-box {
+.fixed-box {
   background-color: orange;
 }

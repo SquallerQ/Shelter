@@ -25,16 +25,6 @@ const sudokuGrid = document.querySelector('.game__inner')
 const sudokuRows = document.querySelectorAll('.game__inner-row')
 const sudokuBox = document.querySelectorAll('.game__inner-box')
 
-// console.log(sudokuGrid);
-// for (let i = 0; i < basicMatrix.length; i++) {
-//   console.log(basicMatrix[i]);
-//   for (let j = 0; j < basicMatrix[i].length; j++) {
-//     basicMatrix[i][j].innerHTML = ''
-//     basicMatrix[i][j].style.background = 'blue'
-//     console.log('a',basicMatrix[i][j]);
-//   }
-// }
-
 
 function renderGrid () {
 
@@ -68,37 +58,33 @@ sudokuGrid.addEventListener("click", function (event) {
     }
   });
 
-// function disabledBoxes(boxesCount) {
-//   const disabledBoxesOnARow = Math.round(boxesCount / 9)
-//   const ar = getRandomNumbers(disabledBoxesOnARow);
-//   console.log(ar);
-//     for (let i = 1; i < sudokuRows.length + 1; i++) {
-//       let row = document.querySelector(`.game__inner-row-${i}`);
-//       console.log(row);
-//       row.classList.add('active')
-//       let boxInRow = row.querySelectorAll(".game__inner-box");
-//       for (let j = 0; j < boxInRow.length; j++) {
-//         boxInRow[i][j].value = ar[i];
-//         console.log(boxInRow);
-//         // boxInRow[j].value = basicMatrix[i - 1][j];
-//       }
-//     }
-// }
-// disabledBoxes(35)
+function disabledBoxes(boxesCount) {
+  const disabledBoxesOnARow = Math.round(boxesCount / 9)
+    for (let i = 1; i < sudokuRows.length + 1; i++) {
+      let row = document.querySelector(`.game__inner-row-${i}`);
+      let boxInRow = row.querySelectorAll(".game__inner-box");
+      const arrayForFixedBoxes = getRandomNumbers(disabledBoxesOnARow);
+      for (let j = 0; j < boxInRow.length; j++) {
+        if (arrayForFixedBoxes.includes(Number(boxInRow[j].value))) {
+          boxInRow[j].classList.add('fixed-box')
+          boxInRow[j].disabled = true;
+        }
+      }
+    }
+}
+disabledBoxes(35)
 
-// function getRandomNumbers(max) {
-//   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-//   const newArray = [];
-//   for (let i = 0; i < max; i++) {
-//     let randomElement = array[Math.floor(Math.random() * array.length)];
-//     console.log(randomElement);
-//     if (newArray.includes(randomElement)) {
-//       i = i - 1;
-//     } else {
-//       newArray.push(randomElement);
-//     }
-//   }
-//   return newArray;
-// }
+function getRandomNumbers(max) {
+  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const newArray = [];
+  for (let i = 0; i < max; i++) {
+    let randomElement = array[Math.floor(Math.random() * array.length)];
+    if (newArray.includes(randomElement)) {
+      i = i - 1;
+    } else {
+      newArray.push(randomElement);
+    }
+  }
+  return newArray;
+}
 
-// console.log();
