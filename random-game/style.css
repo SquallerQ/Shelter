@@ -29,9 +29,10 @@ a {
 .game__container {
   margin-top: 80px;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
-  flex-direction: column;
+  column-gap: 50px;
+  /* flex-direction: column; */
 }
 .game__inner-row {
   display: flex;
@@ -53,4 +54,28 @@ a {
 }
 .fixed-box {
   background-color: orange;
+}
+
+.game__menu-title {
+  margin-bottom: 15px;
+
+}
+.game__menu-score {
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+.game__menu-move {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.game__menu-win {
+  width: 200px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  border: 1px solid blue;
 }
