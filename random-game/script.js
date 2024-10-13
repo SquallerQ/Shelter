@@ -27,7 +27,9 @@ const inputSound = document.getElementById('inputSound');
 const winSound = document.getElementById('winSound');
 
 function renderGrid () {
-  
+  swapRows(basicMatrix);
+  swapRows(basicMatrix);
+  swapRows(basicMatrix);
   const startGrid = []
   for (let i = 1; i < sudokuRows.length + 1; i++) {
     let row = document.querySelector(`.game__inner-row-${i}`);
@@ -177,8 +179,8 @@ function changeGridWithEmptyCeils (array, row, ceil, value) {
 }
 
 
-console.log(fullGridWithAllCeils);
-console.log(gridWithEmptyCeils);
+// console.log(fullGridWithAllCeils);
+// console.log(gridWithEmptyCeils);
 
 
 function updateScore() {
@@ -247,7 +249,7 @@ newGameButton.addEventListener("click", function () {
   gameEndMoveCount.style.display = "none";
   gameEndScoreSpan.innerHTML = 0;
   gameEndMoveCountSpan.innerHTML = 0;
-  gameEndInner.style.border = "6px solid #ccc";
+  gameEndInner.style.border = "3px solid #ccc";
   gameEndBox.classList.remove("game__menu-end--active");
   gameEndBox.innerHTML = "Forward to victory";
 
@@ -260,3 +262,12 @@ newGameButton.addEventListener("click", function () {
 
   renderGrid();
 });
+
+function swapRows(grid) {
+  const row1 = Math.floor(Math.random() * 9);
+  let row2;
+  do {
+    row2 = Math.floor(Math.random() * 9); 
+  } while (row1 === row2);
+  [grid[row1], grid[row2]] = [grid[row2], grid[row1]];
+}

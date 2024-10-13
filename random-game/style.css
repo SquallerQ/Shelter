@@ -92,6 +92,7 @@ main {
 
 .active-box {
   background-color: #d4fff7;
+  outline: none;
 }
 .fixed-box {
   color: #fff;
