@@ -13,7 +13,7 @@ const basicMatrix = [
 let fullGridWithAllCeils = []
 let gridWithEmptyCeils = []
 
-let score = 0;
+let currentScore = 0;
 let moveCount = 0;
 
 const sudokuGrid = document.querySelector('.game__inner')
@@ -110,9 +110,13 @@ sudokuGrid.addEventListener("keydown", function (event) {
   if (event.keyCode === 8 || event.keyCode === 46 || event.keyCode === 9) {
     return event.preventDefault();
   }
-  if (event.keyCode >= 49 && event.keyCode <= 57) {
+  if ((event.keyCode >= 49 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)) {
+    if (event.keyCode >= 96 && event.keyCode <= 105) {
+      userAnswer = String.fromCharCode(event.keyCode - 48);
+    } else {
+      userAnswer = event.key;
+    }
     event.target.value = event.key;
-    userAnswer = event.key;
   } else {
     event.preventDefault();
   }
@@ -150,8 +154,8 @@ function changeGridWithEmptyCeils (array, row, ceil, value) {
   const fullGridFlat = fullGridWithAllCeils.flat()
     if (userGridFlat[(rowToNumber - 1) * 9 + (ceilToNumber - 1)] ===
       fullGridFlat[(rowToNumber - 1) * 9 + (ceilToNumber - 1)]) {
-      score++;
-      scoreOnPage.textContent = score;
+      currentScore = currentScore*2;
+      scoreOnPage.textContent = currentScore;
     }
 
 
@@ -174,31 +178,50 @@ console.log(gridWithEmptyCeils);
 
 
 function updateScore() {
-  const scoreListElement = document.querySelector('.game__score-last');
+  const scoreListElements = document.querySelectorAll('.game__score-last div .div__score');
   const scores = JSON.parse(localStorage.getItem('gameScores')) || [];
 
-  scoreListElement.innerHTML = '';
-  
-  scores.slice(0, 10).forEach((score, index) => {
-    const li = document.createElement('li');
-    li.textContent = `${index + 1}. ${score}`;
-    scoreListElement.appendChild(li);
+  scoreListElements.forEach((span, index) => {
+    if (scores[index] !== undefined) {
+      span.textContent = scores[index]; 
+    } else {
+      span.textContent = ""; 
+    }
   });
 }
 
 function saveScoreToLS(score) {
-  let scores = JSON.parse(localStorage.getItem('gameScores')) || [];
-  scores.unshift(score);
+  const globalScore = score - moveCount / 2;
+  let scores = JSON.parse(localStorage.getItem("gameScores")) || [];
+  scores.unshift(globalScore);
   if (scores.length > 10) {
     scores = scores.slice(0, 10);
   }
-  localStorage.setItem('gameScores', JSON.stringify(scores));
+  localStorage.setItem("gameScores", JSON.stringify(scores));
   updateScore();
 }
 
 
 function gameEnd() {
-  console.log("You won!");
-
-  saveScoreToLS(score);
+  const gameEnd = document.querySelector('.game__menu-end')
+  const gameEndScore = document.querySelector('.game__menu-end--score')
+  const gameEndMoveCount = document.querySelector('.game__menu-end--count')
+  const gameEndScoreSpan = document.querySelector('.game__menu-end--score span')
+  const gameEndMoveCountSpan = document.querySelector('.game__menu-end--count span')
+  const gameEndInner = document.querySelector('.game__inner')
+  gameEnd.innerHTML = 'You won!'
+  gameEnd.classList.add("game__menu-end--active");
+  sudokuBox.forEach(function (item) {
+    item.classList.add("win-box");
+  });
+  gameEndScore.style.display = 'block';
+  gameEndMoveCount.style.display = 'block';
+  gameEndScoreSpan.innerHTML = currentScore;
+  gameEndMoveCountSpan.innerHTML = moveCount;
+  gameEndInner.style.border = '6px solid #000'
+  saveScoreToLS(currentScore);
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  updateScore();
+});
