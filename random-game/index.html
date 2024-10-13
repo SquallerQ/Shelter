@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sudoku</title>
+  <link rel="icon" sizes="32x32" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <main>
+    <audio id="inputSound" src="sound/input-sound.wav" preload="auto"></audio>
+    <audio id="winSound" src="sound/win-sound.wav" preload="auto"></audio>
     <div class="game">
 
 
@@ -142,6 +145,12 @@
           <div class="game__menu-end--count">Your Move Count: <span>5</span></div>
           <div class="game__menu-end--score">Your Score: <span>1</span></div>
         </div>
+
+        
+      </div>
+      <div class="game__option">
+        <button class="game__option-new">New Game</button>
+
       </div>
     </div>
 

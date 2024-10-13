@@ -38,6 +38,14 @@ main {
   padding: 0 15px;
   max-width: 1200px;
 }
+
+.game__container {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  column-gap: 50px;
+}
+
 .game__score {
   padding: 15px;
   border-top: 3px solid #ccc;
@@ -58,12 +66,7 @@ main {
 }
 
 
-.game__container {
-  margin-top: 80px;
-  display: flex;
-  justify-content: center;
-  column-gap: 50px;
-}
+
 .game__inner {
   border: 3px solid #ccc
 }
@@ -95,7 +98,7 @@ main {
   background-color: #380c87;
 }
 .win-box {
-  background-color: #b9ff68;
+  background-color: #4caf50;
   border: 1px solid #0a530d;
 }
 
@@ -145,6 +148,41 @@ main {
 .game__menu-end--score span {
   padding-left: 10px;
 }
+
+.game__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+}
+
+.game__option-new {
+  margin: 10px 0;
+  display: inline-block;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #4caf50;
+  cursor: pointer;
+}
+
+.game__option-new:hover {
+  background-color: #45a049;
+}
+
+
+
+
+
+
+
+
+
+
 
 .footer {
   display: flex;

@@ -23,6 +23,8 @@ const sudokuBox = document.querySelectorAll('.game__inner-box')
 const scoreOnPage = document.querySelector('.game__menu-score span');
 const movesOnPage = document.querySelector('.game__menu-move span');
 
+const inputSound = document.getElementById('inputSound');
+const winSound = document.getElementById('winSound');
 
 function renderGrid () {
   
@@ -36,6 +38,7 @@ function renderGrid () {
     }
   }
   fullGridWithAllCeils = cutArrayOnRows(startGrid);
+  disabledBoxes(35);
 }
 renderGrid();
 
@@ -61,7 +64,7 @@ function disabledBoxes(boxesCount) {
     }
     gridWithEmptyCeils = cutArrayOnRows(gridWithEmpty);
 }
-disabledBoxes(35)
+
 
 
 
@@ -117,6 +120,7 @@ sudokuGrid.addEventListener("keydown", function (event) {
       userAnswer = event.key;
     }
     event.target.value = event.key;
+    inputSound.play();
   } else {
     event.preventDefault();
   }
@@ -154,7 +158,7 @@ function changeGridWithEmptyCeils (array, row, ceil, value) {
   const fullGridFlat = fullGridWithAllCeils.flat()
     if (userGridFlat[(rowToNumber - 1) * 9 + (ceilToNumber - 1)] ===
       fullGridFlat[(rowToNumber - 1) * 9 + (ceilToNumber - 1)]) {
-      currentScore = currentScore*2;
+      currentScore = currentScore + 1*2;
       scoreOnPage.textContent = currentScore;
     }
 
@@ -191,9 +195,9 @@ function updateScore() {
 }
 
 function saveScoreToLS(score) {
-  const globalScore = score - moveCount / 2;
+  // const globalScore = score - moveCount / 2;
   let scores = JSON.parse(localStorage.getItem("gameScores")) || [];
-  scores.unshift(globalScore);
+  scores.unshift(score);
   if (scores.length > 10) {
     scores = scores.slice(0, 10);
   }
@@ -201,16 +205,16 @@ function saveScoreToLS(score) {
   updateScore();
 }
 
-
-function gameEnd() {
-  const gameEnd = document.querySelector('.game__menu-end')
+  const gameEndBox = document.querySelector('.game__menu-end')
   const gameEndScore = document.querySelector('.game__menu-end--score')
   const gameEndMoveCount = document.querySelector('.game__menu-end--count')
   const gameEndScoreSpan = document.querySelector('.game__menu-end--score span')
   const gameEndMoveCountSpan = document.querySelector('.game__menu-end--count span')
   const gameEndInner = document.querySelector('.game__inner')
-  gameEnd.innerHTML = 'You won!'
-  gameEnd.classList.add("game__menu-end--active");
+
+function gameEnd() {
+  gameEndBox.innerHTML = "You won!";
+  gameEndBox.classList.add("game__menu-end--active");
   sudokuBox.forEach(function (item) {
     item.classList.add("win-box");
   });
@@ -218,10 +222,41 @@ function gameEnd() {
   gameEndMoveCount.style.display = 'block';
   gameEndScoreSpan.innerHTML = currentScore;
   gameEndMoveCountSpan.innerHTML = moveCount;
-  gameEndInner.style.border = '6px solid #000'
+  gameEndInner.style.border = '6px solid #000';
+  winSound.play();
   saveScoreToLS(currentScore);
 }
 
 window.addEventListener("DOMContentLoaded", () => {
   updateScore();
+});
+
+
+
+const newGameButton = document.querySelector(".game__option-new");
+newGameButton.addEventListener("click", function () {
+  sudokuBox.forEach(function(item) {
+    item.value = ''
+    item.innerHTML = ''
+    item.classList.remove('fixed-box')
+    item.classList.remove('win-box')
+    item.classList.remove('active-box');
+    item.disabled = false;
+  })
+  gameEndScore.style.display = "none";
+  gameEndMoveCount.style.display = "none";
+  gameEndScoreSpan.innerHTML = 0;
+  gameEndMoveCountSpan.innerHTML = 0;
+  gameEndInner.style.border = "6px solid #ccc";
+  gameEndBox.classList.remove("game__menu-end--active");
+  gameEndBox.innerHTML = "Forward to victory";
+
+  score = 0;
+  moveCount = 0;
+  scoreOnPage.textContent = score;
+  movesOnPage.textContent = moveCount;
+  fullGridWithAllCeils = [];
+  gridWithEmptyCeils = [];
+
+  renderGrid();
 });
